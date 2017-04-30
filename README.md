@@ -5,9 +5,9 @@ around the users location which shows landmarks being destroyed over time. I pre
 going to go ahead and start working on that.
 
 ## prototype
-![Prototype 1](prototype1.png)
+![Prototype 1](images/prototype1.png)
 
-![Prototype 2](prototype2.png)
+![Prototype 2](images/prototype2.png)
 
 ## setup
 Start by running `data/download.sh` to get the raw data from the NSIDC website. This can take up to
