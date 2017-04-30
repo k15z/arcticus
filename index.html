@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arcticus</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <style>
+        main {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 0; right: 0;
+        }
+
+        .slider {
+            z-index: 1000;
+            text-align: center;
+            position: absolute;
+            left: 0; right: 0;
+            top: 0;
+        }
+
+        .slider * {
+            width: 100%;
+        }
+
+        .left {
+            position: absolute;
+            top: 3em; bottom: 0;
+            left: 0; right: 50%;
+        }
+
+        .left img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .right {
+            position: absolute;
+            top: 3em; bottom: 0;
+            left: 50%; right: 0;
+        }
+
+        .right iframe {
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="slider">
+            <input type="range" v-model="time_idx" min="0" :max="northern.length"></input>
+            <br/><b>Year: {{northern[time_idx].year}}, Day: {{northern[time_idx].day}}, Area: {{northern[time_idx].area}}</b>
+        </div>
+        <div class="left">
+            <img :src="northern[time_idx].png"/>
+        </div>
+        <div class="right">
+            <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAuDY2gpfB5QfkmwJVZCxWnz9CmyvAJfjk&center=-33.8569,151.2152&zoom=14"></iframe>
+        </div>
+    </main>
+    <script>
+        var vm = new Vue({
+            el: "main",
+            data: {
+                time_idx: 0,
+                northern: false
+            },
+            methods: {
+            },
+            created: function () {
+                var self = this;
+                $.get("data/processed/northern.json", function (northern) {
+                    self.northern = northern;
+                    console.log(self.northern.length)
+                })
+            }
+        });
+    </script>
+</body>
+</html>

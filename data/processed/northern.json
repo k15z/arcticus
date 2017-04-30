@@ -1,0 +1,272 @@
+[
+  {
+    "day": 1,
+    "area": 13034723.95,
+    "year": 2006,
+    "png": "data/processed/4km/2006/masie_all_r00_v01_2006001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 13913402.38,
+    "year": 2006,
+    "png": "data/processed/4km/2006/masie_all_r00_v01_2006090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 10137813.1,
+    "year": 2006,
+    "png": "data/processed/4km/2006/masie_all_r00_v01_2006180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 5849376.08,
+    "year": 2006,
+    "png": "data/processed/4km/2006/masie_all_r00_v01_2006270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 12991511.65,
+    "year": 2007,
+    "png": "data/processed/4km/2007/masie_all_r00_v01_2007001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 14222915.93,
+    "year": 2007,
+    "png": "data/processed/4km/2007/masie_all_r00_v01_2007090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 9743747.63,
+    "year": 2007,
+    "png": "data/processed/4km/2007/masie_all_r00_v01_2007180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 4023569.49,
+    "year": 2007,
+    "png": "data/processed/4km/2007/masie_all_r00_v01_2007270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13223374.5,
+    "year": 2008,
+    "png": "data/processed/4km/2008/masie_all_r00_v01_2008001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 15227495.69,
+    "year": 2008,
+    "png": "data/processed/4km/2008/masie_all_r00_v01_2008090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 10336832.21,
+    "year": 2008,
+    "png": "data/processed/4km/2008/masie_all_r00_v01_2008180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 4402167.29,
+    "year": 2008,
+    "png": "data/processed/4km/2008/masie_all_r00_v01_2008270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13148324.95,
+    "year": 2009,
+    "png": "data/processed/4km/2009/masie_all_r00_v01_2009001_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 10213732.92,
+    "year": 2009,
+    "png": "data/processed/4km/2009/masie_all_r00_v01_2009180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 5159065.73,
+    "year": 2009,
+    "png": "data/processed/4km/2009/masie_all_r00_v01_2009270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13150849.7,
+    "year": 2010,
+    "png": "data/processed/4km/2010/masie_all_r00_v01_2010001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 15157156.25,
+    "year": 2010,
+    "png": "data/processed/4km/2010/masie_all_r00_v01_2010090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 9335550.75,
+    "year": 2010,
+    "png": "data/processed/4km/2010/masie_all_r00_v01_2010180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 4948504.77,
+    "year": 2010,
+    "png": "data/processed/4km/2010/masie_all_r00_v01_2010270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 12897837.93,
+    "year": 2011,
+    "png": "data/processed/4km/2011/masie_all_r00_v01_2011001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 14664859.46,
+    "year": 2011,
+    "png": "data/processed/4km/2011/masie_all_r00_v01_2011090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 9461605.23,
+    "year": 2011,
+    "png": "data/processed/4km/2011/masie_all_r00_v01_2011180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 4473357.22,
+    "year": 2011,
+    "png": "data/processed/4km/2011/masie_all_r00_v01_2011270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13570792.67,
+    "year": 2012,
+    "png": "data/processed/4km/2012/masie_all_r00_v01_2012001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 15493103.77,
+    "year": 2012,
+    "png": "data/processed/4km/2012/masie_all_r00_v01_2012090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 9722319.32,
+    "year": 2012,
+    "png": "data/processed/4km/2012/masie_all_r00_v01_2012180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 3711409.88,
+    "year": 2012,
+    "png": "data/processed/4km/2012/masie_all_r00_v01_2012270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13492252.13,
+    "year": 2013,
+    "png": "data/processed/4km/2013/masie_all_r00_v01_2013001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 15101327.22,
+    "year": 2013,
+    "png": "data/processed/4km/2013/masie_all_r00_v01_2013090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 10305873.79,
+    "year": 2013,
+    "png": "data/processed/4km/2013/masie_all_r00_v01_2013180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 5455844.1,
+    "year": 2013,
+    "png": "data/processed/4km/2013/masie_all_r00_v01_2013270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13397108.6,
+    "year": 2014,
+    "png": "data/processed/4km/2014/masie_all_r00_v01_2014001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 14783331.04,
+    "year": 2014,
+    "png": "data/processed/4km/2014/masie_all_r00_v01_2014090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 10181637.01,
+    "year": 2014,
+    "png": "data/processed/4km/2014/masie_all_r00_v01_2014180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 5498604.72,
+    "year": 2014,
+    "png": "data/processed/4km/2014/masie_all_r00_v01_2014270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13458792.51,
+    "year": 2015,
+    "png": "data/processed/4km/2015/masie_all_r00_v01_2015001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 14560641.76,
+    "year": 2015,
+    "png": "data/processed/4km/2015/masie_all_r00_v01_2015090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 10349407.27,
+    "year": 2015,
+    "png": "data/processed/4km/2015/masie_all_r00_v01_2015180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 5004421.54,
+    "year": 2015,
+    "png": "data/processed/4km/2015/masie_all_r00_v01_2015270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 13095244.88,
+    "year": 2016,
+    "png": "data/processed/4km/2016/masie_all_r00_v01_2016001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 14634587.76,
+    "year": 2016,
+    "png": "data/processed/4km/2016/masie_all_r00_v01_2016090_4km.png"
+  },
+  {
+    "day": 180,
+    "area": 9819537.36,
+    "year": 2016,
+    "png": "data/processed/4km/2016/masie_all_r00_v01_2016180_4km.png"
+  },
+  {
+    "day": 270,
+    "area": 4889040.83,
+    "year": 2016,
+    "png": "data/processed/4km/2016/masie_all_r00_v01_2016270_4km.png"
+  },
+  {
+    "day": 1,
+    "area": 12857417.74,
+    "year": 2017,
+    "png": "data/processed/4km/2017/masie_all_r00_v01_2017001_4km.png"
+  },
+  {
+    "day": 90,
+    "area": 14228991.94,
+    "year": 2017,
+    "png": "data/processed/4km/2017/masie_all_r00_v01_2017090_4km.png"
+  }
+]
