@@ -1,33 +1,38 @@
 import os
 import csv
 import json
+from PIL import Image
+from glob import glob
 
-TARGET_DAYS = [1, 90, 180, 270]
+entries = []
+for csv_file in glob("raw/csv/*.csv"):
+    with open(csv_file, "rt") as fin:
+        reader = csv.DictReader(fin, delimiter=",")
+        reader = map(lambda d: {k.strip(): v.strip() for k, v in d.items()}, reader)
+        for entry in reader:
+            year = int(entry["year"])
+            month = int(entry["mo"])
+            area = float(entry["area"])
+            entries.append((year, month, area))
 
-entries_csv = []
-entries_json = []
-with open("raw/arctic_sea_ice.csv", "rt") as fin:
-    next(fin) # ignore their header
-    reader = csv.DictReader(fin)
-    for row in reader:
-        row = {k: v.strip() for k, v in row.items()}
-        year = int(row["yyyyddd"][:4])
-        day = int(row["yyyyddd"][4:])
-        area = float(row[" (0) Northern_Hemisphere"])
-        if day in TARGET_DAYS:
-            entries_csv.append((year, day, area))
-            entries_json.append({
-                "year": year, 
-                "day": day, 
-                "area": area,
-                "png": "data/processed/4km/" + str(year) + "/masie_all_r00_v01_{}_4km.png".format(row["yyyyddd"])
-            })
-        # assert os.path.exists("processed/4km/" + str(year) + "/masie_all_r00_v01_{}_4km.png".format(row["yyyyddd"])), row["yyyyddd"]
+def is_relevant(row):
+    year, month, area = row
+    return year >= 1992 and year % 4 == 0 and month == 10
+entries = sorted(filter(is_relevant, entries))
+entries = [{"year": y, "month": m, "area": a} for y, m, a in entries]
 
-with open("processed/northern.csv", "wt") as fout:
-    writer = csv.writer(fout)
-    writer.writerow(["year", "day", "northern_hemisphere_area"])
-    writer.writerows(entries_csv)
+max_area = max(map(lambda x: x["area"], entries))
+min_area = max(map(lambda x: x["area"], entries))
 
-with open("processed/northern.json", "wt") as fout:
-    json.dump(entries_json, fout, indent=2)
+for entry in entries:
+    year = str(entry["year"])
+    month = str(entry["month"])
+    if len(month) == 1: month = "0" + month
+    if os.path.exists("raw/image/N_{}{}_conc_highres_v2.1.png".format(year, month)):
+        img = Image.open("raw/image/N_{}{}_conc_highres_v2.1.png".format(year, month))
+    else:
+        img = Image.open("raw/image/N_{}{}_conc_v2.1.png".format(year, month))
+    img.save("processed/" + year + month + ".png")
+    entry["png"] = "data/processed/" + year + month + ".png"
+    entry["radius"] = 1000.0 * entry["area"] / max_area
+json.dump(entries, open("processed/entries.json", "wt"), indent=2)

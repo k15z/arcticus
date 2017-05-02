@@ -1,16 +1,16 @@
-# arctic-us
-Two ideas: (1) use a map of the United States to show the area of Arctic sea ice. As the ice melts, 
-we show states fading out to show the extent of the damage or (2) we show a circle of destruction 
-around the users location which shows landmarks being destroyed over time. I prefer idea (2) so I'm
-going to go ahead and start working on that.
+# arcticus
+This is the code for CMS.631: Sketch 5. In this visualization, we use creative maps to show the sea
+ice levels over the past decade. You can imagine this being embedded in an article on the New York 
+Time about the rapid decrease in artic sea ice levels.
 
-## prototype
-![Prototype 1](images/prototype1.png)
+We start by asking users to map out their environment by listing some of the places they frequently
+visit. Next, we show a map of the Arctic sea ice on the left labeled as a polar bear's environment 
+and a map with a circle around the user's places as the user's environment. The user watches as the
+environment shrinks over time, cutting of access to their food/school/whatever.
 
-![Prototype 2](images/prototype2.png)
+![screenshot](images/prototype.png)
 
 ## setup
 Start by running `data/download.sh` to get the raw data from the NSIDC website. This can take up to
 an hour since we have to recursively download all of the image files; you can also ask me to send a
-copy directly to you. Next, run `data/preprocess.py` to produce the processed dataset which holds a
-subset of the data - you can change the subset that is extracted by modifying `TARGET_DAYS`.
+copy directly to you. Next, run `data/preprocess.py` to produce the processed dataset.

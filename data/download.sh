@@ -1,4 +1,3 @@
-wget ftp://sidads.colorado.edu/DATASETS/NOAA/G02186/masie_4km_allyears_extent_sqkm.csv -O raw/arctic_sea_ice.csv
-wget -r ftp://sidads.colorado.edu/DATASETS/NOAA/G02186/png/4km/ -P raw/
-cp -r raw/sidads.colorado.edu/DATASETS/NOAA/G02186/png/4km raw/png
-rm -r raw/sidads.colorado.edu
+wget -r -nH --cut-dirs=10 ftp://sidads.colorado.edu/DATASETS/NOAA/G02135/north/monthly/data/ -P raw/csv/
+wget -r -nH --cut-dirs=10 ftp://sidads.colorado.edu/DATASETS/NOAA/G02135/north/monthly/images/10_Oct/ -P raw/image/ -A "*conc_v2.1.png"
+wget -r -nH --cut-dirs=10 ftp://sidads.colorado.edu/DATASETS/NOAA/G02135/north/monthly/images/10_Oct/ -P raw/image/ -A "*conc_hires_v2.1.png"

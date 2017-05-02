@@ -40,7 +40,7 @@
             left: 50%; right: 0;
         }
 
-        .right iframe {
+        .right #map {
             border: 0;
             width: 100%;
             height: 100%;
@@ -50,14 +50,14 @@
 <body>
     <main>
         <div class="slider">
-            <input type="range" v-model="time_idx" min="0" :max="northern.length"></input>
-            <br/><b>Year: {{northern[time_idx].year}}, Day: {{northern[time_idx].day}}, Area: {{northern[time_idx].area}}</b>
+            <input type="range" v-model="time_idx" min="0" :max="northern.length-1"></input><br/>
+            <b>Year: {{northern[time_idx].year}}, Area: {{northern[time_idx].area}}</b>
         </div>
         <div class="left">
             <img :src="northern[time_idx].png"/>
         </div>
         <div class="right">
-            <iframe src="https://www.google.com/maps/embed/v1/view?key=AIzaSyAuDY2gpfB5QfkmwJVZCxWnz9CmyvAJfjk&center=-33.8569,151.2152&zoom=14"></iframe>
+            <div id="map"></div>
         </div>
     </main>
     <script>
@@ -65,18 +65,58 @@
             el: "main",
             data: {
                 time_idx: 0,
-                northern: false
+                latitude: 42.360566899999995,
+                longitude: -71.0890496,
+                northern: false,
+                state: {
+                    map: false,
+                    circle: false
+                }
             },
-            methods: {
+            watch: {
+                time_idx: function (val, old) {
+                    var self = this;
+                    self.state.circle.setRadius(self.northern[val].radius);
+                }
             },
             created: function () {
                 var self = this;
-                $.get("data/processed/northern.json", function (northern) {
+                $.get("data/processed/entries.json", function (northern) {
                     self.northern = northern;
-                    console.log(self.northern.length)
-                })
+                    self.state.circle.setRadius(self.northern[0].radius);
+                });
+                navigator.geolocation.getCurrentPosition(function (res) {
+                    self.latitude = res.coords.latitude;
+                    self.longitude = res.coords.longitude;
+                }, alert);
             }
         });
+        
+        function initMap() {
+            setTimeout(function() {
+                vm.state.map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 14,
+                    center: {lat: 42.360566899999995, lng: -71.0890496},
+                    mapTypeId: 'terrain'
+                });
+                vm.state.circle = new google.maps.Circle({
+                    strokeColor: '#FF0000',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#FF0000',
+                    fillOpacity: 0.35,
+                    map: vm.state.map,
+                    center: {lat: 42.360566899999995, lng: -71.0890496},
+                    radius: 0.0
+                });
+
+                for (var i = 0; i < vm.northern.length; i++) {
+                    var img = new Image();
+                    img.src = vm.northern[i].png;
+                }
+            }, 1000)
+        }
     </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuDY2gpfB5QfkmwJVZCxWnz9CmyvAJfjk&callback=initMap"></script>
 </body>
 </html>
