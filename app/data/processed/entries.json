@@ -1,51 +1,51 @@
 [
   {
     "area": 7.71,
-    "year": 1992,
     "png": "data/processed/199210.png",
     "month": 10,
-    "radius": 1000.0
+    "year": 1992,
+    "radius": 1566601.929122118
   },
   {
     "area": 7.51,
-    "year": 1996,
     "png": "data/processed/199610.png",
     "month": 10,
-    "radius": 974.0596627756161
+    "year": 1996,
+    "radius": 1546149.3296194682
   },
   {
     "area": 6.66,
-    "year": 2000,
     "png": "data/processed/200010.png",
     "month": 10,
-    "radius": 863.8132295719845
+    "year": 2000,
+    "radius": 1456024.1640802135
   },
   {
     "area": 6.36,
-    "year": 2004,
     "png": "data/processed/200410.png",
     "month": 10,
-    "radius": 824.9027237354086
+    "year": 2004,
+    "radius": 1422852.9734712115
   },
   {
     "area": 5.72,
-    "year": 2008,
     "png": "data/processed/200810.png",
     "month": 10,
-    "radius": 741.89364461738
+    "year": 2008,
+    "radius": 1349365.1279795817
   },
   {
     "area": 4.53,
-    "year": 2012,
     "png": "data/processed/201210.png",
     "month": 10,
-    "radius": 587.5486381322958
+    "year": 2012,
+    "radius": 1200827.3449048402
   },
   {
     "area": 4.27,
-    "year": 2016,
     "png": "data/processed/201610.png",
     "month": 10,
-    "radius": 553.8261997405966
+    "year": 2016,
+    "radius": 1165857.3244487825
   }
 ]

@@ -1,6 +1,7 @@
 import os
 import csv
 import json
+import math
 from PIL import Image
 from glob import glob
 
@@ -34,5 +35,5 @@ for entry in entries:
         img = Image.open("raw/image/N_{}{}_conc_v2.1.png".format(year, month))
     img.save("processed/" + year + month + ".png")
     entry["png"] = "data/processed/" + year + month + ".png"
-    entry["radius"] = 1000.0 * entry["area"] / max_area
+    entry["radius"] = math.sqrt((entry["area"] * 1000 * 1000 * 1000000) / 3.1415)
 json.dump(entries, open("processed/entries.json", "wt"), indent=2)

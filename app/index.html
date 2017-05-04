@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Arctic Ice</title>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/vue.min.js"></script>
+    <style>
+        body {
+            background-color: whitesmoke;
+            font-family: 'Raleway', sans-serif;
+        }
+
+        main {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 1600px;
+            height: 640px;
+            transform: translate(-800px, -320px);
+        }
+
+        .left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 360px;
+            background-color: white;
+            overflow-y: scroll;
+        }
+
+        .middle {
+            position: absolute;
+            top: 0;
+            left: 365px;
+            bottom: 0;
+            right: 365px;
+            background-color: white;
+            overflow-y: scroll;
+        }
+
+        .right {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            width: 360px;
+            background-color: white;
+            overflow-y: scroll;
+        }
+
+        .page {
+            padding: 3px;
+            text-align: center;
+        }
+
+        .next {
+            z-index: 1000;
+            position: absolute;
+            bottom: 5px; left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .scroller.page {
+            position: absolute !important;
+            top: 0; bottom: 0;
+            left: 0; right: 0;
+        }
+
+        .scroller.page .left-map {
+            overflow: hidden;
+            position: absolute;
+            top: 0; bottom: 150px;
+            left: 0; right: 50%;
+        }
+
+        .scroller.page .left-map #map {
+            border: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .scroller.page .left-map .rectangle {
+            position: absolute;
+            top: 0; bottom: 0;
+            left: 0; right: 0;
+            background: black;
+        }
+
+        .scroller.page .right-map {
+            overflow: hidden;
+            position: absolute;
+            top: 0; bottom: 150px;
+            left: 50%; right: 0;
+        }
+
+        .scroller.page .bottom {
+            height: 150px;
+            position: absolute;
+            bottom: 0;
+            left: 0; right: 0;
+        }
+
+        .page {
+            position: absolute;
+            transform: translateY(-100000px);
+        }
+        .page.active {
+            position: relative;
+            transform: translateY(0px);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="left">
+            <div class="page" v-bind:class="{active: state.page != 'scroller' }">
+                <h1>&nbsp;</h1>
+                <h2>Why does it matter?</h2>
+                <blockquote>
+                    The destruction of the Artic directly affects polar bears, ice seals, walruses, arctic foxes. The loss of 
+                    Arctic sea ice results in less sunlight being reflected away, resulting in a positive feedback loop which
+                    accelerates global warming.
+                </blockquote>
+                <br/>
+                <img src="images/loop.jpeg" style="width:80%;margin-top:3em;"></img>
+            </div>
+            <div class="page" v-bind:class="{active: state.page == 'scroller' }">
+                <h1>&nbsp;</h1>
+                <h2>Let's put it all together!</h2>
+                <blockquote>
+                    Use the scroller to explore how the arctic has shrunk over the past few decades. The map on the left shows
+                    a circle around you with the same area as the Arctic sea ice. As the sea ice melts away, so do the things
+                    around you. How long can you last?
+                </blockquote>
+            </div>
+        </div>
+        <div class="middle">
+            <button class="next" v-if="state.page != 'scroller'" v-on:click="next">Next</button>
+            <div class="page" v-bind:class="{active: state.page == 'start' }">
+                <h1>The Arctic Ice Project</h1>
+                <br/><br/><br/>
+                <img src="images/polar-bears.jpg" style="width:90%"></img>
+            </div>
+            <div class="page" v-bind:class="{active: state.page == 'you' }" v-if="state.page == 'you'">
+                <h1>Here's where you are:</h1>
+                <img src="images/you.png" style="width:60%"></img>
+            </div>
+            <div class="page" v-bind:class="{active: state.page == 'me' }">
+                <h1>Here's the arctic:</h1>
+                <img src="images/me.png" style="width:60%"></img>
+            </div>
+            <div class="scroller page" v-bind:class="{active: state.page == 'scroller' }">
+                <div class="left-map">
+                    <div id="map"></div>
+                    <div class="rectangle"></div>
+                </div>
+                <div class="right-map">
+                    <img :src="model.entries[time_idx].png" style="width: 100%;"/>
+                </div>
+                <div class="bottom" style="background:url('images/GlobalTemp.png');background-size: 100% 180px;">
+                    <input type="range" v-model="time_idx" min="0" :max="model.entries.length-1" style="width:100%;"></input>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="page" v-bind:class="{active: state.page != 'scroller' }">
+                <h1>&nbsp;</h1>
+                <h2>But what if I like warm weather?</h2>
+                <ul>
+                    Do you also like severe weather events like hurricanes and tsunamis? How about poisonous jellyfish stings 
+                    next time you go to the beach? Or further destabilization of arid regions such as the Middle East? Those 
+                    are just a few of the many negative consequences which will result from climate change.
+                </ul>
+                <br/>
+                <img src="images/hurricane.gif" style="width:80%;"></img>
+            </div>
+            <div class="page" v-bind:class="{active: state.page == 'scroller' }">
+                <h1>&nbsp;</h1>
+                <h2>Get involved!</h2>
+                <blockquote>
+                    Call your elected officials and ask them to oppose H.R. 861: To terminate the Environmental Protection 
+                    Agency. Enter your zip code below to find your representatives:
+                </blockquote>
+                <div>
+                    <input v-model="zipcode" type="text"></input><button @click="lookup">Go!</button>
+                    <br/><br/>
+                    <div v-if="zip_results.length != 0">
+                        Over {{zip_calls}} people have called their representatives in this zip
+                        code to demand a cleaner future. Add your name to the list.
+                    </div>
+                    <br/>
+                    <table style="width:100%;">
+                        <tr v-for="result in zip_results">
+                            <td><input type="checkbox"></input></td>
+                            <td>{{result.first_name}} {{result.last_name}}</td>
+                            <td>{{result.phone}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        var vm = new Vue({
+            el: "main",
+            data: {
+                time_idx: 1,
+                zipcode: "02142",
+                zip_calls: parseInt(Math.random()*1000000),
+                zip_results: [],
+                state: {
+                    page: "start" // "start"
+                },
+                model: {
+                    entries: []
+                }
+            },
+            watch: {
+                time_idx: function (val, old) {
+                    var self = this;
+                    var pct = 50.0 * self.model.entries[val].radius / 1566601.929122118
+                    document.getElementsByClassName("rectangle")[0].style.background = "radial-gradient(ellipse at center, rgba(0,0,0,0) 0%,rgba(0,0,0,1.0) " + pct + "%)"
+                }
+            },
+            created: function () {
+                var self = this;
+                $.get("data/processed/entries.json", function (entries) {
+                    self.model.entries = entries;
+                });
+            },
+            methods: {
+                next: function () {
+                    var self = this;
+                    if (self.state.page == "start") {
+                        self.state.page = "you";
+                    }
+                    else if (self.state.page == "you") {
+                        self.state.page = "me";
+                    }
+                    else if (self.state.page == "me") {
+                        initMap();
+                        self.time_idx = 0;
+                        self.state.page = "scroller";
+                    }
+                },
+                lookup: function () {
+                    var self = this;
+                    self.zip_calls = parseInt(Math.random()*1000000);
+                    $.get("https://congress.api.sunlightfoundation.com/legislators/locate?apikey=[your_api_key]&zip=" + self.zipcode, function (res) {
+                        self.zip_results = res.results;
+                    });
+                }
+            }
+        })
+
+        function initMap() {
+            setTimeout(function() {
+                vm.state.map = new google.maps.Map(document.getElementById('map'), {
+                    zoom: 4,
+                    center: {lat: 42.360566899999995, lng: -71.0890496},
+                    mapTypeId: 'terrain'
+                });
+                vm.state.circle = new google.maps.Circle({
+                    strokeColor: '#1e90ff',
+                    strokeOpacity: 0.8,
+                    strokeWeight: 2,
+                    fillColor: '#1e90ff',
+                    fillOpacity: 0.35,
+                    map: vm.state.map,
+                    center: {lat: 42.360566899999995, lng: -71.0890496},
+                    radius: 0.0
+                });
+
+                for (var i = 0; i < vm.model.entries.length; i++) {
+                    var img = new Image();
+                    img.src = vm.model.entries[i].png;
+                }
+            }, 1000)
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuDY2gpfB5QfkmwJVZCxWnz9CmyvAJfjk&callback=initMap"></script>
+</body>
+</html>

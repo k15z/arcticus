@@ -14,3 +14,5 @@ environment shrinks over time, cutting of access to their food/school/whatever.
 Start by running `data/download.sh` to get the raw data from the NSIDC website. This can take up to
 an hour since we have to recursively download all of the image files; you can also ask me to send a
 copy directly to you. Next, run `data/preprocess.py` to produce the processed dataset.
+
+<iframe src="https://www.kevz.me/app/arcticus/" style="width: 100%;height: 600px;"></iframe>
